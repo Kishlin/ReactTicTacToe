@@ -18,5 +18,5 @@
       "predeploy": "npm run build",
       "deploy": "gh-pages -d build"
   },
-  "homepage": "http://myname.github.io/myapp"
+  "homepage": "http://kishlin.github.io/ReactTicTacToe"
 }

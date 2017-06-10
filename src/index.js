@@ -81,19 +81,28 @@ class Game extends React.Component {
   }
 
   render() {
-    const history = this.state.history;
-    const current = history[this.state.stepNumber];
-    const winner = calculateWinner(current.squares);
+    const currentStep = this.state.stepNumber;
+    const history     = this.state.history;
+    const current     = history[currentStep];
+    const winner      = calculateWinner(current.squares);
     
     const moves = history.map((step, move) => {
       const desc = move ? 
         'Move #' + move :
         'Game start';
-      return (
-        <li key={move}>
-          <a href="#" onClick={() => this.jumpTo(move)}>{desc}</a>
-        </li>
-      );
+        if (currentStep === move) {
+          return (
+            <li key={move}>
+              <a className={'bold'} href="#" onClick={() => this.jumpTo(move)}>{desc}</a>
+            </li>
+          );
+        } else {
+          return (
+            <li key={move}>
+              <a href="#" onClick={() => this.jumpTo(move)}>{desc}</a>
+            </li>
+          );
+        }
     });
 
     let status;
